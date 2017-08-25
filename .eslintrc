@@ -1,0 +1,21 @@
+{
+  "extends": "airbnb",
+  "env": {
+    "browser": true,
+  },
+  "rules": {
+    "max-len": 0,
+    "func-names": ["error", "never"],
+    "import/prefer-default-export": 0,
+    "quotes": 0,
+    "react/prefer-stateless-function": 0,
+    "import/extensions": ["error", "never"],
+  },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "webpack.dev.config.js"
+      }
+    },
+  },
+}

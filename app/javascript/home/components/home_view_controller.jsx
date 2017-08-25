@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 export class HomeVc extends React.PureComponent {
   render() {
@@ -7,7 +7,7 @@ export class HomeVc extends React.PureComponent {
       <div className="home-vc">
         {this.props.text}
       </div>
-    )
+    );
   }
 }
 

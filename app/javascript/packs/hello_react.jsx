@@ -14,19 +14,19 @@ const Hello = props => (
       <FlatButton label={props.name} />
     </MuiThemeProvider>
   </div>
-)
+);
 
 Hello.defaultProps = {
-  name: 'David'
-}
+  name: 'David',
+};
 
 Hello.propTypes = {
-  name: PropTypes.string
-}
+  name: PropTypes.string,
+};
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <Hello name="React" />,
     document.body.appendChild(document.createElement('div')),
-  )
-})
+  );
+});
