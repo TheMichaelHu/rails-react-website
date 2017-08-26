@@ -1,0 +1,40 @@
+@import "colors";
+
+.home-vc {
+  .home-wrapper.shifted {
+    transition:.7s;
+    -webkit-transition:.7s;
+    -moz-transition:.7s;
+    margin-left: 250px;
+  }
+
+  .home-wrapper.unshifted {
+    transition:.1s;
+    -webkit-transition:.1s;
+    -moz-transition:.1s;
+    margin-left: 0px;
+  }
+
+  .nav-home {
+    padding: 15px 0px 15px 16px;
+    font-size: 30px;
+    font-weight: 100;
+  }
+
+  .drawer-nav {
+    .active div {
+      background: $grey800;
+    }
+  }
+
+  .nav-footer {
+    .nav-footer-content {
+        padding: 50px 0;
+        text-align: center;
+    }
+  }
+
+  .home-content {
+    min-height: calc(100vh - 183px);
+  }
+}

@@ -35,6 +35,7 @@ gem 'jbuilder', '~> 2.5'
 gem "react-rails"
 gem 'webpacker', '~> 2.0'
 gem 'newrelic_rpm'
+gem "font-awesome-rails"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

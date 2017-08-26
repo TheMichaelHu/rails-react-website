@@ -45,10 +45,12 @@ module.exports = {
   ],
 
   resolve: {
-    extensions: settings.extensions,
+    extensions: ['.js', '.jsx', '.es6', '.scss', 'sass', '.jpg', '.jpeg', '.png'],
+    enforceExtension: false,
     modules: [
       resolve(settings.source_path),
-      'node_modules'
+      'node_modules',
+      resolve('app/javascript')
     ]
   },
 

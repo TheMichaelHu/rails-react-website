@@ -1,5 +1,10 @@
 {
   "extends": "airbnb",
+  "globals": {
+    "_": false,
+    "React": false,
+    "PropTypes": false,
+  },
   "env": {
     "browser": true,
   },
@@ -10,12 +15,11 @@
     "quotes": 0,
     "react/prefer-stateless-function": 0,
     "import/extensions": ["error", "never"],
+    "import/no-extraneous-dependencies": 0,
+    "import/no-unresolved": 0,
+    "class-methods-use-this": 0,
   },
   "settings": {
-    "import/resolver": {
-      "webpack": {
-        "config": "webpack.dev.config.js"
-      }
-    },
+    "import/resolver": "webpack"
   },
 }
