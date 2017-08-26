@@ -1,0 +1,31 @@
+@import "colors";
+
+.hero {
+  width: 120vw;
+  background: $grey900;
+  -ms-transform: rotate(-5deg);
+  -webkit-transform: rotate(-5deg);
+  transform: rotate(-5deg);
+  padding-bottom: 4vh;
+
+  .hero-content {
+    padding-top: calc(10vh + 64px + 2vh);
+    padding-left: calc(10vw + 5vw);
+    color: $grey50;
+    -ms-transform: rotate(5deg);
+    -webkit-transform: rotate(5deg);
+    transform: rotate(5deg);
+
+    .title {
+      font-size: 64px;
+      padding-bottom: 2vh;
+      font-weight: 100;
+      color: $lightGreen500;
+    }
+
+    .text {
+      font-size: 30px;
+      font-weight: 100;
+    }
+  }
+}

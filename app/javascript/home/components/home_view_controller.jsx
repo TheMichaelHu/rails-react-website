@@ -6,6 +6,7 @@ import Subheader from 'material-ui/Subheader';
 import { grey600, lightGreen400 } from 'material-ui/styles/colors';
 import Paper from 'material-ui/Paper';
 
+import { PortfolioVc } from './portfolio_view_controller';
 import '../styles/home_view_controller';
 
 export class HomeVc extends React.Component {
@@ -64,11 +65,14 @@ export class HomeVc extends React.Component {
 
   renderHeader() {
     return (
-      <AppBar
-        title={this.props.mobile ? "Portfolio" : ""}
-        iconElementLeft={this.props.mobile ? undefined : (<div />)}
-        onLeftIconButtonTouchTap={this.toggleDrawer}
-      />
+      <div className="nav-header">
+        <AppBar
+          title="Portfolio"
+          iconElementLeft={this.props.mobile ? undefined : (<div />)}
+          onLeftIconButtonTouchTap={this.toggleDrawer}
+          style={{ boxShadow: "none" }}
+        />
+      </div>
     );
   }
 
@@ -77,7 +81,8 @@ export class HomeVc extends React.Component {
       <div className="nav-footer">
         <Paper zDepth={1}>
           <div className="nav-footer-content">
-            Copyright 2017 | Michael Hu
+            <p>Copyright 2017 Michael Hu | All Rights Reserved</p>
+            <p>Many thanks to the team behind <a href="http://www.material-ui.com/">Material-UI</a> for making amazing React components so I didn&apos;t have to!</p>
           </div>
         </Paper>
       </div>
@@ -90,7 +95,7 @@ export class HomeVc extends React.Component {
         <div className={`home-wrapper ${this.state.openDrawer ? "shifted" : "unshifted"}`}>
           {this.renderHeader()}
           <div className="home-content">
-            Content
+            <PortfolioVc />
           </div>
           {this.renderFooter()}
         </div>

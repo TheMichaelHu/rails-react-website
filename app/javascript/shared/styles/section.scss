@@ -1,0 +1,17 @@
+@import "colors";
+
+.section {
+  min-height: 30vh;
+  padding: 7vw 5vw 5vw 5vw;
+
+  .title {
+    font-weight: 600;
+  }
+
+  hr {
+    border-color: $lightGreen500;
+    margin: 10px 0;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}

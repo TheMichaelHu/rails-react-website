@@ -1,4 +1,4 @@
-@import "colors";
+@import "../../shared/styles/colors";
 
 .home-vc {
   .home-wrapper.shifted {
@@ -27,14 +27,24 @@
     }
   }
 
+  .nav-header {
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    box-shadow: none;
+  }
+
   .nav-footer {
     .nav-footer-content {
-        padding: 50px 0;
+        padding: 20px 0;
         text-align: center;
+    }
+    p {
+      padding-bottom: 10px;
     }
   }
 
   .home-content {
-    min-height: calc(100vh - 183px);
+    min-height: calc(100vh - 119px);
   }
 }
