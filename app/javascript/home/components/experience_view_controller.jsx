@@ -1,4 +1,3 @@
-import { grey700 } from 'material-ui/styles/colors';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import FontIcon from 'material-ui/FontIcon';
 import { Section } from 'shared/components/section';
@@ -139,10 +138,10 @@ export class ExperienceVc extends React.Component {
   renderPreview() {
     return (
       <div className="experience-vc">
-        <Section title="Education" color={grey700}>
+        <Section title="Education">
           <ExperienceCollection experiences={this.education} />
         </Section>
-        <Section title="Work Experience" color={grey700}>
+        <Section title="Work Experience">
           <ExperienceCollection experiences={this.workExperiences.slice(0, 1)} />
         </Section>
         {this.renderShowMore()}
@@ -157,13 +156,13 @@ export class ExperienceVc extends React.Component {
 
     return (
       <div className="experience-vc">
-        <Section title="Education" color={grey700}>
+        <Section title="Education">
           <ExperienceCollection experiences={this.education} />
         </Section>
-        <Section title="Work Experience" color={grey700}>
+        <Section title="Work Experience">
           <ExperienceCollection experiences={this.workExperiences} />
         </Section>
-        <Section title="Volunteer Experience" color={grey700}>
+        <Section title="Volunteer Experience">
           <ExperienceCollection experiences={this.volunteerExperiences} />
         </Section>
         {this.renderShowMore()}

@@ -6,9 +6,12 @@ import Subheader from 'material-ui/Subheader';
 import { grey600, lightGreen500 } from 'material-ui/styles/colors';
 import Paper from 'material-ui/Paper';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
+import Scroll from 'react-scroll';
 
 import { PortfolioVc } from './portfolio_view_controller';
 import '../styles/home_view_controller';
+
+const Link = Scroll.Link;
 
 export class HomeVc extends React.Component {
   constructor(props) {
@@ -29,26 +32,33 @@ export class HomeVc extends React.Component {
         className="drawer-nav"
         width={250}
       >
-        <div className="nav-home">
+        <div
+          className="nav-home"
+          role="menuItem"
+          tabIndex={0}
+          onClick={Scroll.animateScroll.scrollToTop}
+        >
           Michael Hu
         </div>
         <Subheader>Portfolio</Subheader>
-        <MenuItem
-          primaryText="About"
-          leftIcon={<FontIcon className="fa fa-pencil" color={lightGreen500} />}
-        />
-        <MenuItem
-          primaryText="Experience"
-          leftIcon={<FontIcon className="fa fa-graduation-cap" color={lightGreen500} />}
-        />
-        <MenuItem
-          primaryText="Projects"
-          leftIcon={<FontIcon className="fa fa-laptop" color={lightGreen500} />}
-        />
-        <MenuItem
-          primaryText="Contact"
-          leftIcon={<FontIcon className="fa fa-envelope" color={lightGreen500} />}
-        />
+        <Link activeClass="active" to="about" smooth spy duration={500} offset={-50}>
+          <MenuItem
+            primaryText="About"
+            leftIcon={<FontIcon className="fa fa-pencil" color={lightGreen500} />}
+          />
+        </Link>
+        <Link activeClass="active" to="experience" smooth spy duration={500} offset={-50}>
+          <MenuItem
+            primaryText="Experience"
+            leftIcon={<FontIcon className="fa fa-graduation-cap" color={lightGreen500} />}
+          />
+        </Link>
+        <Link activeClass="active" to="projects" smooth spy duration={500} offset={-50}>
+          <MenuItem
+            primaryText="Projects"
+            leftIcon={<FontIcon className="fa fa-laptop" color={lightGreen500} />}
+          />
+        </Link>
         <Subheader>Misc</Subheader>
         <MenuItem
           primaryText="Photography"
