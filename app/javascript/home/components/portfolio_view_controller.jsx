@@ -5,6 +5,7 @@ import { Section } from 'shared/components/section';
 import { IconGroup } from 'shared/components/icon_group';
 import Scroll from 'react-scroll';
 import { ExperienceVc } from './experience_view_controller';
+import { ProjectsVc } from './projects_view_controller';
 import '../styles/portfolio_view_controller';
 
 const Element = Scroll.Element;
@@ -41,7 +42,9 @@ export class PortfolioVc extends React.PureComponent {
         </Element>
         <Element name="projects">
           <Section title="Projects" color={grey700}>
-            <p>Project Collection</p>
+            <div className="projects-vc-wrapper">
+              <ProjectsVc />
+            </div>
           </Section>
         </Element>
       </div>
