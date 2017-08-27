@@ -1,8 +1,9 @@
-import { grey700, grey800 } from 'material-ui/styles/colors';
+import { grey800 } from 'material-ui/styles/colors';
 
 import { Hero } from 'shared/components/hero';
 import { Section } from 'shared/components/section';
 import { IconGroup } from 'shared/components/icon_group';
+import { ExperienceVc } from './experience_view_controller';
 import '../styles/portfolio_view_controller';
 
 export class PortfolioVc extends React.PureComponent {
@@ -30,10 +31,8 @@ export class PortfolioVc extends React.PureComponent {
             />
           </div>
         </Section>
-        <Section title="Experience" color={grey800}>
-          <p>Resume:</p>
-        </Section>
-        <Section title="Projects" color={grey700}>
+        <ExperienceVc />
+        <Section title="Projects" color={grey800}>
           <p>Project Collection</p>
         </Section>
       </div>

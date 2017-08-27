@@ -1,0 +1,18 @@
+@import "../../shared/styles/colors";
+
+.experience-vc {
+  background-color: $grey700;
+
+  .experience-title {
+    font-weight: 600;
+    padding-top: 20px;
+  }
+
+  .section:not(:first-child) {
+    padding-top: 0;
+  }
+
+  .section:not(:last-child) {
+    padding-bottom: 10px;
+  }
+}

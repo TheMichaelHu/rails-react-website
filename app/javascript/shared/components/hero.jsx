@@ -19,10 +19,10 @@ export class Hero extends React.PureComponent {
 
 Hero.propTypes = {
   title: PropTypes.string,
-  text: PropTypes.string,
+  text:  PropTypes.string,
 };
 
 Hero.defaultProps = {
   title: "",
-  text: "",
+  text:  "",
 };

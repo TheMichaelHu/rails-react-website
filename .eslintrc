@@ -18,8 +18,12 @@
     "import/no-extraneous-dependencies": 0,
     "import/no-unresolved": 0,
     "class-methods-use-this": 0,
+    "key-spacing": ["error", { "align": "value" }],
   },
   "settings": {
     "import/resolver": "webpack"
   },
+  "plugins": [
+    "react"
+  ],
 }

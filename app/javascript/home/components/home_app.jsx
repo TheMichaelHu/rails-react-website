@@ -14,20 +14,20 @@ export class HomeApp extends React.Component {
   render() {
     const muiTheme = getMuiTheme({
       palette: {
-        primary1Color: grey900,
-        primary2Color: grey800,
-        primary3Color: grey400,
-        accent1Color: lightGreen500,
-        accent2Color: cyan700,
-        accent3Color: lightGreen200,
-        textColor: grey50,
+        primary1Color:      grey900,
+        primary2Color:      grey800,
+        primary3Color:      grey400,
+        accent1Color:       lightGreen500,
+        accent2Color:       cyan700,
+        accent3Color:       lightGreen200,
+        textColor:          grey50,
         secondaryTextColor: fade(grey50, 0.7),
         alternateTextColor: grey50,
-        canvasColor: fade(grey900, 0.97),
-        borderColor: fade(grey50, 0.3),
-        disabledColor: fade(grey50, 0.3),
-        pickerHeaderColor: fade(grey50, 0.12),
-        clockCircleColor: fade(grey50, 0.12),
+        canvasColor:        fade(grey900, 0.97),
+        borderColor:        fade(grey50, 0.3),
+        disabledColor:      fade(grey50, 0.3),
+        pickerHeaderColor:  fade(grey50, 0.12),
+        clockCircleColor:   fade(grey50, 0.12),
       },
     });
 

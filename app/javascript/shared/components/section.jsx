@@ -17,13 +17,13 @@ export class Section extends React.PureComponent {
 }
 
 Section.propTypes = {
-  title: PropTypes.string,
+  title:    PropTypes.string,
   children: PropTypes.node,
-  color: PropTypes.string,
+  color:    PropTypes.string,
 };
 
 Section.defaultProps = {
-  title: "",
+  title:    "",
   children: null,
-  color: null,
+  color:    null,
 };

@@ -3,8 +3,9 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import FontIcon from 'material-ui/FontIcon';
 import Subheader from 'material-ui/Subheader';
-import { grey600, lightGreen400 } from 'material-ui/styles/colors';
+import { grey600, lightGreen500 } from 'material-ui/styles/colors';
 import Paper from 'material-ui/Paper';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
 
 import { PortfolioVc } from './portfolio_view_controller';
 import '../styles/home_view_controller';
@@ -34,19 +35,19 @@ export class HomeVc extends React.Component {
         <Subheader>Portfolio</Subheader>
         <MenuItem
           primaryText="About"
-          leftIcon={<FontIcon className="fa fa-pencil" color={lightGreen400} />}
+          leftIcon={<FontIcon className="fa fa-pencil" color={lightGreen500} />}
         />
         <MenuItem
           primaryText="Experience"
-          leftIcon={<FontIcon className="fa fa-graduation-cap" color={lightGreen400} />}
+          leftIcon={<FontIcon className="fa fa-graduation-cap" color={lightGreen500} />}
         />
         <MenuItem
           primaryText="Projects"
-          leftIcon={<FontIcon className="fa fa-laptop" color={lightGreen400} />}
+          leftIcon={<FontIcon className="fa fa-laptop" color={lightGreen500} />}
         />
         <MenuItem
           primaryText="Contact"
-          leftIcon={<FontIcon className="fa fa-envelope" color={lightGreen400} />}
+          leftIcon={<FontIcon className="fa fa-envelope" color={lightGreen500} />}
         />
         <Subheader>Misc</Subheader>
         <MenuItem
@@ -67,7 +68,6 @@ export class HomeVc extends React.Component {
     return (
       <div className="nav-header">
         <AppBar
-          title="Portfolio"
           iconElementLeft={this.props.mobile ? undefined : (<div />)}
           onLeftIconButtonTouchTap={this.toggleDrawer}
           style={{ boxShadow: "none" }}
@@ -77,8 +77,19 @@ export class HomeVc extends React.Component {
   }
 
   renderFooter() {
+    const actionStyle = {
+      float:       "right",
+      marginRight: 25,
+      marginTop:   -25,
+    };
+
     return (
       <div className="nav-footer">
+        <a href="mailto:michael.an.hu@gmail.com">
+          <FloatingActionButton style={actionStyle} secondary>
+            <FontIcon className="fa fa-envelope" />
+          </FloatingActionButton>
+        </a>
         <Paper zDepth={1}>
           <div className="nav-footer-content">
             <p>Copyright 2017 Michael Hu | All Rights Reserved</p>
