@@ -14,12 +14,12 @@ export class PortfolioVc extends React.PureComponent {
   render() {
     return (
       <div className="portfolio-vc">
-        <div className="hero-wrapper">
+        <Element name="hero" className="hero-wrapper">
           <Hero
             title="Michael Hu"
             text="software engineer"
           />
-        </div>
+        </Element>
         <Element name="about">
           <Section title="About">
             <p>I&apos;m a grad student at Cornell University grabbing an MEng in computer science. My background is that of a web developer with some machine learning here or there, but I&apos;m really hoping to flex my machine learning and distributed computing skills during my time in grad school.</p>

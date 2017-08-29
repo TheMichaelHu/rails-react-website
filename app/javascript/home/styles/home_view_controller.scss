@@ -20,10 +20,11 @@
     font-size: 30px;
     font-weight: 100;
     color: $lightGreen500;
+    cursor: pointer;
   }
 
   .drawer-nav {
-    .active div {
+    .menu-active div {
       background: $grey800;
     }
   }

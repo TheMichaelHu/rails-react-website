@@ -36,6 +36,8 @@ gem "react-rails"
 gem 'webpacker', '~> 2.0'
 gem 'newrelic_rpm'
 gem "font-awesome-rails"
+gem 'irbtools', require: 'irbtools/binding'
+gem 'seed_dump'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -19,6 +19,7 @@
     "import/no-unresolved": 0,
     "class-methods-use-this": 0,
     "key-spacing": ["error", { "align": "value" }],
+    "arrow-body-style": 0,
   },
   "settings": {
     "import/resolver": "webpack"

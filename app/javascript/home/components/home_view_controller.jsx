@@ -16,13 +16,26 @@ const Link = Scroll.Link;
 export class HomeVc extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { openDrawer: !props.mobile };
+    this.state = {
+      openDrawer: !props.mobile,
+      headerText: "woah that's me",
+    };
 
     this.toggleDrawer = this.toggleDrawer.bind(this);
+    this.scrollTop = this.scrollTop.bind(this);
+    this.scrollNotTop = this.scrollNotTop.bind(this);
   }
 
   toggleDrawer() {
     this.setState({ openDrawer: !this.state.openDrawer });
+  }
+
+  scrollTop() {
+    this.setState({ headerText: "woah that's me" });
+  }
+
+  scrollNotTop() {
+    this.setState({ headerText: "Michael Hu" });
   }
 
   renderDrawer() {
@@ -32,28 +45,33 @@ export class HomeVc extends React.Component {
         className="drawer-nav"
         width={250}
       >
-        <div
-          className="nav-home"
-          role="menuItem"
-          tabIndex={0}
-          onClick={Scroll.animateScroll.scrollToTop}
+        <Link
+          onSetActive={this.scrollTop}
+          onSetInactive={this.scrollNotTop}
+          to="hero"
+          smooth
+          spy
+          duration={500}
+          offset={-64}
         >
-          Michael Hu
-        </div>
+          <div className="nav-home">
+            {this.state.headerText}
+          </div>
+        </Link>
         <Subheader>Portfolio</Subheader>
-        <Link activeClass="active" to="about" smooth spy duration={500} offset={-50}>
+        <Link activeClass="menu-active" to="about" smooth spy duration={500} offset={-64}>
           <MenuItem
             primaryText="About"
             leftIcon={<FontIcon className="fa fa-pencil" color={lightGreen500} />}
           />
         </Link>
-        <Link activeClass="active" to="experience" smooth spy duration={500} offset={-50}>
+        <Link activeClass="menu-active" to="experience" smooth spy duration={500} offset={-64}>
           <MenuItem
             primaryText="Experience"
             leftIcon={<FontIcon className="fa fa-graduation-cap" color={lightGreen500} />}
           />
         </Link>
-        <Link activeClass="active" to="projects" smooth spy duration={500} offset={-50}>
+        <Link activeClass="menu-active" to="projects" smooth spy duration={500} offset={-64}>
           <MenuItem
             primaryText="Projects"
             leftIcon={<FontIcon className="fa fa-laptop" color={lightGreen500} />}
@@ -61,7 +79,7 @@ export class HomeVc extends React.Component {
         </Link>
         <Subheader>Misc</Subheader>
         <MenuItem
-          primaryText="Photography"
+          primaryText="Hobbies"
           disabled
           leftIcon={<FontIcon className="fa fa-camera" color={grey600} />}
         />
