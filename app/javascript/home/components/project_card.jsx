@@ -1,4 +1,5 @@
 import { Card, CardMedia, CardTitle } from 'material-ui/Card';
+import { Link } from 'react-router-dom';
 
 import "../styles/project_card";
 
@@ -8,7 +9,7 @@ export class ProjectCard extends React.PureComponent {
 
     return (
       <div className="project-card">
-        <a href={`/projects/${this.props.project.id}`}>
+        <Link to={`/project/${this.props.project.id}`}>
           <Card style={{ width: 400 }}>
             <CardMedia>
               <img src={imgUrl} alt={this.props.project.title} />
@@ -19,7 +20,7 @@ export class ProjectCard extends React.PureComponent {
               style={{ height: 100, overflow: "hidden" }}
             />
           </Card>
-        </a>
+        </Link>
       </div>
     );
   }

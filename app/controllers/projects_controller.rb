@@ -3,30 +3,34 @@ class ProjectsController < ApplicationController
 
   def index
     if tool = project_params[:tool]
-      @projects = Tool.find_by(name: tool).projects
+      projects = Tool.find_by(name: tool).projects
     else
-      @projects = Project.all
+      projects = Project.all
     end
     if type = project_params[:type]
-      @projects = @projects.where(type: Type.find_by(name: type))
+      projects = projects.where(type: Type.find_by(name: type))
     end
     if order = project_params[:order]
       if order == "awesomeness"
-        @projects = @projects.order(rank: :asc)
+        projects = projects.order(rank: :asc)
       elsif order == "random"
-        @projects = @projects.shuffle
+        projects = projects.shuffle
       else
-        @projects = @projects.order(date: order)
+        projects = projects.order(date: order)
       end
     else
-      @projects = @projects.order(date: :desc)
+      projects = projects.order(date: :desc)
     end
 
-    render :json => @projects
+    render :json => projects
   end
 
   def show
-    @project = Project.find(project_params[:id])
+    project = Project.find(project_params[:id])
+    project_json = project.as_json
+    project_json[:type] = project.type.name.capitalize
+    project_json[:tools] = project.tools.map(&:name).join(", ")
+    render :json => project_json
   end
 
   private

@@ -1,95 +1,25 @@
 import AppBar from 'material-ui/AppBar';
-import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem';
 import FontIcon from 'material-ui/FontIcon';
-import Subheader from 'material-ui/Subheader';
-import { grey600, lightGreen500 } from 'material-ui/styles/colors';
 import Paper from 'material-ui/Paper';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
-import Scroll from 'react-scroll';
+import { Route, Switch } from 'react-router-dom';
 
 import { PortfolioVc } from './portfolio_view_controller';
+import { ProjectVc } from './project_view_controller';
 import '../styles/home_view_controller';
-
-const Link = Scroll.Link;
 
 export class HomeVc extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       openDrawer: !props.mobile,
-      headerText: "woah that's me",
     };
 
     this.toggleDrawer = this.toggleDrawer.bind(this);
-    this.scrollTop = this.scrollTop.bind(this);
-    this.scrollNotTop = this.scrollNotTop.bind(this);
   }
 
   toggleDrawer() {
     this.setState({ openDrawer: !this.state.openDrawer });
-  }
-
-  scrollTop() {
-    this.setState({ headerText: "woah that's me" });
-  }
-
-  scrollNotTop() {
-    this.setState({ headerText: "Michael Hu" });
-  }
-
-  renderDrawer() {
-    return (
-      <Drawer
-        open={this.state.openDrawer}
-        className="drawer-nav"
-        width={250}
-      >
-        <Link
-          onSetActive={this.scrollTop}
-          onSetInactive={this.scrollNotTop}
-          to="hero"
-          smooth
-          spy
-          duration={500}
-          offset={-64}
-        >
-          <div className="nav-home">
-            {this.state.headerText}
-          </div>
-        </Link>
-        <Subheader>Portfolio</Subheader>
-        <Link activeClass="menu-active" to="about" smooth spy duration={500} offset={-64}>
-          <MenuItem
-            primaryText="About"
-            leftIcon={<FontIcon className="fa fa-pencil" color={lightGreen500} />}
-          />
-        </Link>
-        <Link activeClass="menu-active" to="experience" smooth spy duration={500} offset={-64}>
-          <MenuItem
-            primaryText="Experience"
-            leftIcon={<FontIcon className="fa fa-graduation-cap" color={lightGreen500} />}
-          />
-        </Link>
-        <Link activeClass="menu-active" to="projects" smooth spy duration={500} offset={-64}>
-          <MenuItem
-            primaryText="Projects"
-            leftIcon={<FontIcon className="fa fa-laptop" color={lightGreen500} />}
-          />
-        </Link>
-        <Subheader>Misc</Subheader>
-        <MenuItem
-          primaryText="Hobbies"
-          disabled
-          leftIcon={<FontIcon className="fa fa-camera" color={grey600} />}
-        />
-        <MenuItem
-          primaryText="Blog"
-          disabled
-          leftIcon={<FontIcon className="fa fa-bullhorn" color={grey600} />}
-        />
-      </Drawer>
-    );
   }
 
   renderHeader() {
@@ -134,11 +64,13 @@ export class HomeVc extends React.Component {
         <div className={`home-wrapper ${this.state.openDrawer ? "shifted" : "unshifted"}`}>
           {this.renderHeader()}
           <div className="home-content">
-            <PortfolioVc />
+            <Switch>
+              <Route exact path="/" component={() => <PortfolioVc open={this.state.openDrawer} />} />
+              <Route path="/project/:id" component={router => <ProjectVc router={router} open={this.state.openDrawer} />} />
+            </Switch>
           </div>
           {this.renderFooter()}
         </div>
-        {this.renderDrawer()}
       </div>
     );
   }

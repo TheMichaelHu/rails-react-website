@@ -1,16 +1,89 @@
-import { grey700 } from 'material-ui/styles/colors';
-
+import Drawer from 'material-ui/Drawer';
+import MenuItem from 'material-ui/MenuItem';
+import { grey700, grey600, lightGreen500 } from 'material-ui/styles/colors';
 import { Hero } from 'shared/components/hero';
 import { Section } from 'shared/components/section';
 import { IconGroup } from 'shared/components/icon_group';
-import Scroll from 'react-scroll';
+import Subheader from 'material-ui/Subheader';
+import FontIcon from 'material-ui/FontIcon';
+import { Element, Link } from 'react-scroll';
 import { ExperienceVc } from './experience_view_controller';
 import { ProjectsVc } from './projects_view_controller';
 import '../styles/portfolio_view_controller';
 
-const Element = Scroll.Element;
-
 export class PortfolioVc extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      headerText: "woah that's me",
+    };
+
+    this.scrollTop = this.scrollTop.bind(this);
+    this.scrollNotTop = this.scrollNotTop.bind(this);
+  }
+
+  scrollTop() {
+    this.setState({ headerText: "woah that's me" });
+  }
+
+  scrollNotTop() {
+    this.setState({ headerText: "Michael Hu" });
+  }
+
+  renderDrawer() {
+    return (
+      <Drawer
+        open={this.props.open}
+        className="drawer-nav"
+        width={250}
+      >
+        <Link
+          onSetActive={this.scrollTop}
+          onSetInactive={this.scrollNotTop}
+          to="hero"
+          smooth
+          spy
+          duration={500}
+          offset={-64}
+        >
+          <div className="nav-home">
+            {this.state.headerText}
+          </div>
+        </Link>
+        <Subheader>Portfolio</Subheader>
+        <Link activeClass="menu-active" to="about" smooth spy duration={500} offset={-64}>
+          <MenuItem
+            primaryText="About"
+            leftIcon={<FontIcon className="fa fa-pencil" color={lightGreen500} />}
+          />
+        </Link>
+        <Link activeClass="menu-active" to="experience" smooth spy duration={500} offset={-64}>
+          <MenuItem
+            primaryText="Experience"
+            leftIcon={<FontIcon className="fa fa-graduation-cap" color={lightGreen500} />}
+          />
+        </Link>
+        <Link activeClass="menu-active" to="projects" smooth spy duration={500} offset={-64}>
+          <MenuItem
+            primaryText="Projects"
+            leftIcon={<FontIcon className="fa fa-laptop" color={lightGreen500} />}
+          />
+        </Link>
+        <Subheader>Misc</Subheader>
+        <MenuItem
+          primaryText="Hobbies"
+          disabled
+          leftIcon={<FontIcon className="fa fa-camera" color={grey600} />}
+        />
+        <MenuItem
+          primaryText="Blog"
+          disabled
+          leftIcon={<FontIcon className="fa fa-bullhorn" color={grey600} />}
+        />
+      </Drawer>
+    );
+  }
+
   render() {
     return (
       <div className="portfolio-vc">
@@ -47,7 +120,16 @@ export class PortfolioVc extends React.PureComponent {
             </div>
           </Section>
         </Element>
+        {this.renderDrawer()}
       </div>
     );
   }
 }
+
+PortfolioVc.propTypes = {
+  open: PropTypes.bool,
+};
+
+PortfolioVc.defaultProps = {
+  open: false,
+};
