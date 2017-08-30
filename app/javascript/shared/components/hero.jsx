@@ -8,9 +8,9 @@ export class Hero extends React.PureComponent {
           <div className="title">
             {this.props.title}
           </div>
-          <div className="text">
+          <span className="text">
             {this.props.text}
-          </div>
+          </span>
         </div>
       </div>
     );

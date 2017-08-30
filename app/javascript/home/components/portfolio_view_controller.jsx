@@ -7,6 +7,8 @@ import { IconGroup } from 'shared/components/icon_group';
 import Subheader from 'material-ui/Subheader';
 import FontIcon from 'material-ui/FontIcon';
 import { Element, Link } from 'react-scroll';
+import Typed from 'typed.js';
+
 import { ExperienceVc } from './experience_view_controller';
 import { ProjectsVc } from './projects_view_controller';
 import '../styles/portfolio_view_controller';
@@ -20,6 +22,22 @@ export class PortfolioVc extends React.PureComponent {
 
     this.scrollTop = this.scrollTop.bind(this);
     this.scrollNotTop = this.scrollNotTop.bind(this);
+  }
+
+  componentDidMount() {
+    const options = {
+      strings:    ["software enigneer^1000.^500.^500.^500 (╯°□°)╯︵ ┻━┻", "software engineer"],
+      typeSpeed:  50,
+      backSpeed:  30,
+      backDelay:  500,
+      showCursor: false,
+    };
+
+    this.typed = new Typed(".hero .text", options);
+  }
+
+  componentWillUnmount() {
+    this.typed.destroy();
   }
 
   scrollTop() {
@@ -90,7 +108,7 @@ export class PortfolioVc extends React.PureComponent {
         <Element name="hero" className="hero-wrapper">
           <Hero
             title="Michael Hu"
-            text="software engineer"
+            text=""
           />
         </Element>
         <Element name="about">

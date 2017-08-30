@@ -5645,6 +5645,10 @@ typed-function@0.10.5:
   version "0.10.5"
   resolved "https://registry.yarnpkg.com/typed-function/-/typed-function-0.10.5.tgz#2e0f18abd065219fab694a446a65c6d1981832c0"
 
+typed.js@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/typed.js/-/typed.js-2.0.5.tgz#5158f9dfe73cf42f1366d2dfffdc2b2e159b9401"
+
 typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
