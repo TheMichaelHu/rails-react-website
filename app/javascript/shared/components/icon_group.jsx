@@ -25,8 +25,10 @@ export class IconGroup extends React.PureComponent {
         <a key={`icon ${counter}`} href={icon.url}>
           <IconButton
             iconStyle={this.styles[`${this.props.size}Icon`]}
-            tooltipStyles={this.styles[`${this.props.size}Tooltip`]}
             style={this.styles[this.props.size]}
+            tooltip={icon.tooltip}
+            touch
+            tooltipStyles={{ left: 29, top: 65 }}
           >
             <FontIcon
               className={`fa fa-${icon.name}`}

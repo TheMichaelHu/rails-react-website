@@ -6,6 +6,7 @@ import { Section } from 'shared/components/section';
 import Subheader from 'material-ui/Subheader';
 import FontIcon from 'material-ui/FontIcon';
 import { Link } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
 
 import { IconGroup } from 'shared/components/icon_group';
 
@@ -28,10 +29,10 @@ export class ProjectVc extends React.PureComponent {
   getIcons() {
     const icons = [];
     if (this.state.project.code_url) {
-      icons.push({ name: "github", url: this.state.project.code_url });
+      icons.push({ name: "github", url: this.state.project.code_url, tooltip: "repo" });
     }
     if (this.state.project.demo_url) {
-      icons.push({ name: "laptop", url: this.state.project.demo_url });
+      icons.push({ name: "laptop", url: this.state.project.demo_url, tooltip: "demo" });
     }
     return icons;
   }
@@ -70,6 +71,14 @@ export class ProjectVc extends React.PureComponent {
             text={project.description}
           />
         </div>
+        <div
+          className="cover-img"
+          style={{
+            background:     `url(${project.img_url}) no-repeat center`,
+            backgroundSize: "cover",
+          }}
+          alt={project.title}
+        />
         <Section title="Info">
           <span className="title">Type: </span>
           {project.type} Project <br />
@@ -86,7 +95,7 @@ export class ProjectVc extends React.PureComponent {
           </div>
         </Section>
         <Section title="Summary">
-          {project.text}
+          <ReactMarkdown source={project.text} />
         </Section>
         {this.renderDrawer()}
       </div>

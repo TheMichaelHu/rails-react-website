@@ -1,3 +1,28 @@
 .project-card {
   display: inline-block;
+
+  .card {
+    width: 20vw;
+    @media (max-width: 1199px) {
+      width: calc(80vw / 3);
+    }
+    @media (max-width: 991px) {
+      width: 40vw;
+    }
+
+    .card-img {
+      height: 15vw;
+      @media (max-width: 1199px) {
+        height: calc(80vw / 4);
+      }
+      @media (max-width: 991px) {
+        height: 30vw;
+      }
+    }
+
+    .card-text {
+      height: 100px;
+      overflow: hidden;
+    }
+  }
 }

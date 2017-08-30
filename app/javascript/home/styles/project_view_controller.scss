@@ -1,3 +1,5 @@
+@import "../../shared/styles/colors";
+
 .project-vc {
   .hero-wrapper {
     top: -10vh;
@@ -6,12 +8,34 @@
     margin-bottom: -5vh;
   }
 
+  .cover-img {
+    width: 80vw;
+    max-width: 800px;
+    height: 40vw;
+    max-height: 400px;
+    margin:auto;
+    margin-bottom: 50px;
+    border: 2px solid $lightGreen500;
+  }
+
   .icon-group-wrapper {
     padding-top: 20px;
     text-align: center;
   }
 
-  .section:not(:last-child) {
-    padding-bottom: 0px;
+  .section {
+    padding-top: 0px;
+    padding-bottom: 20px;
+  }
+
+  .img-wrapper {
+    text-align: center;
+    padding: 20px;
+
+    .summary-img {
+      max-width: 80vw;
+      max-height: 400px;
+      border: 2px solid $lightGreen500;
+    }
   }
 }
