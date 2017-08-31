@@ -71,14 +71,13 @@ export class ProjectVc extends React.PureComponent {
             text={project.description}
           />
         </div>
-        <div
-          className="cover-img"
-          style={{
-            background:     `url(${project.img_url}) no-repeat center`,
-            backgroundSize: "cover",
-          }}
-          alt={project.title}
-        />
+        <div className="img-wrapper">
+          <img
+            className="summary-img"
+            src={project.img_url}
+            alt={project.title}
+          />
+        </div>
         <Section title="Info">
           <span className="title">Type: </span>
           {project.type} Project <br />

@@ -25,8 +25,13 @@ export class PortfolioVc extends React.PureComponent {
   }
 
   componentDidMount() {
+    let strings = ["software engineer"];
+    if (Math.random() > 0.5) {
+      strings = ["software enigneer^3000.^500.^500.^500 (╯°□°)╯︵ ┻━┻", "software engineer"];
+    }
+
     const options = {
-      strings:    ["software enigneer^1000.^500.^500.^500 (╯°□°)╯︵ ┻━┻", "software engineer"],
+      strings,
       typeSpeed:  50,
       backSpeed:  30,
       backDelay:  500,

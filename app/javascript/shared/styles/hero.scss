@@ -15,6 +15,7 @@
     -ms-transform: rotate(5deg);
     -webkit-transform: rotate(5deg);
     transform: rotate(5deg);
+    width: 80%;
 
     .title {
       font-size: 64px;
@@ -26,7 +27,6 @@
     .text {
       font-size: 30px;
       font-weight: 100;
-      width: 80%;
     }
   }
 }
