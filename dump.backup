@@ -1,0 +1,495 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.6.4
+-- Dumped by pg_dump version 9.6.4
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: michael
+--
+
+CREATE TABLE ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE ar_internal_metadata OWNER TO michael;
+
+--
+-- Name: projects; Type: TABLE; Schema: public; Owner: michael
+--
+
+CREATE TABLE projects (
+    id bigint NOT NULL,
+    title character varying NOT NULL,
+    description character varying NOT NULL,
+    text character varying,
+    misc character varying,
+    team character varying,
+    code_url character varying,
+    demo_url character varying,
+    img_url character varying,
+    date date NOT NULL,
+    type_id integer,
+    rank integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE projects OWNER TO michael;
+
+--
+-- Name: projects_id_seq; Type: SEQUENCE; Schema: public; Owner: michael
+--
+
+CREATE SEQUENCE projects_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE projects_id_seq OWNER TO michael;
+
+--
+-- Name: projects_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: michael
+--
+
+ALTER SEQUENCE projects_id_seq OWNED BY projects.id;
+
+
+--
+-- Name: projects_tools; Type: TABLE; Schema: public; Owner: michael
+--
+
+CREATE TABLE projects_tools (
+    project_id bigint NOT NULL,
+    tool_id bigint NOT NULL
+);
+
+
+ALTER TABLE projects_tools OWNER TO michael;
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: michael
+--
+
+CREATE TABLE schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE schema_migrations OWNER TO michael;
+
+--
+-- Name: tools; Type: TABLE; Schema: public; Owner: michael
+--
+
+CREATE TABLE tools (
+    id bigint NOT NULL,
+    name character varying NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE tools OWNER TO michael;
+
+--
+-- Name: tools_id_seq; Type: SEQUENCE; Schema: public; Owner: michael
+--
+
+CREATE SEQUENCE tools_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE tools_id_seq OWNER TO michael;
+
+--
+-- Name: tools_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: michael
+--
+
+ALTER SEQUENCE tools_id_seq OWNED BY tools.id;
+
+
+--
+-- Name: types; Type: TABLE; Schema: public; Owner: michael
+--
+
+CREATE TABLE types (
+    id bigint NOT NULL,
+    name character varying NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE types OWNER TO michael;
+
+--
+-- Name: types_id_seq; Type: SEQUENCE; Schema: public; Owner: michael
+--
+
+CREATE SEQUENCE types_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE types_id_seq OWNER TO michael;
+
+--
+-- Name: types_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: michael
+--
+
+ALTER SEQUENCE types_id_seq OWNED BY types.id;
+
+
+--
+-- Name: projects id; Type: DEFAULT; Schema: public; Owner: michael
+--
+
+ALTER TABLE ONLY projects ALTER COLUMN id SET DEFAULT nextval('projects_id_seq'::regclass);
+
+
+--
+-- Name: tools id; Type: DEFAULT; Schema: public; Owner: michael
+--
+
+ALTER TABLE ONLY tools ALTER COLUMN id SET DEFAULT nextval('tools_id_seq'::regclass);
+
+
+--
+-- Name: types id; Type: DEFAULT; Schema: public; Owner: michael
+--
+
+ALTER TABLE ONLY types ALTER COLUMN id SET DEFAULT nextval('types_id_seq'::regclass);
+
+
+--
+-- Data for Name: ar_internal_metadata; Type: TABLE DATA; Schema: public; Owner: michael
+--
+
+COPY ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
+environment	development	2017-08-24 23:55:39.911646	2017-08-24 23:55:39.911646
+\.
+
+
+--
+-- Data for Name: projects; Type: TABLE DATA; Schema: public; Owner: michael
+--
+
+COPY projects (id, title, description, text, misc, team, code_url, demo_url, img_url, date, type_id, rank, created_at, updated_at) FROM stdin;
+20	Pointr	a compass on your android wearable that points to eateries and provides Yelp reviews	Pointr is a compass-like navigation application for Android wearables. Using Yelp Search API, Pointr locates several nearby eateries in the user’s vicinity and delegates arrows that each point to a vendor’s location. The restaurant that is most directly in front of the customer has information about its distance, Yelp rating, and reviews displayed.\n\nUsers are given the ability to focus on a specfic location that piques their interest, locking the focused location as the set destination.\n\nPointr aims not only to save people from dire situations, but to also encourage users to seek out new dining experiences. By offering users multiple easily accessible dining options, and plenty of informative Yelp reviews, users will find themselves trying out new places to eat more often while using this app on the go.	\N	Oscar Spencer, Nikolai Wotton, Michael Hu, Kevin Luo	https://github.com/klevingluo/BeanPotPointr	\N	/images/pointr.png	2015-02-08	1	8	2017-08-27 23:23:21.095393	2017-08-30 03:26:42.15651
+4	SASE NERC 2016 Website	informational site for 400+ student conference	My Junior year, I helped host the 2016 Society of Asian Scientists and Engineers (SASE) Northeast Regional Conference at Northeastern University. I managed a team of three people to create branding and media for the conference, this included a website branching off our chapter's current site. Compared to the site you're currently staring at, there's really not much else to say; I was still using vanilla html/css/js back then.\n\n<div class="img-wrapper"><img src="/images/sasenerc2.jpg" /></div>\n\nGetting this many people to do anything with a website is hard.	\N	Michael Hu, Maggie Zhang, Brian Zhu	\N	http://www.northeastern.edu/sase/conference	/images/sasenerc.png	2016-02-13	3	10	2017-08-27 21:59:31.878246	2017-09-01 01:44:29.199352
+19	Physical Activity Classification	activity classification via blindly throwing accelerometer data at a neural net	This is a classification project I worked on for both research at Northeastern's [mHealth Research Group](https://mhealth.ccs.neu.edu/) and for CS 6140: Machine Learning. The project attempts to classify a chunk of accelerometer data into one of three activities: walking, biking, or climbing stairs. The training data came from labeled accelerometer data collected from a couple tens of volunteers wearing sensors for 3 months. This was merely a proof of concept comparing the results of a neural net classifier and raw data against engineered features and a random forests classifier, so I only used a wrist sensor and an ankle sensor for simplicity.\n\nThe results were that I was able to differentiate walking from biking fairly well, but walking and stairs...not so much. It definitely didn't help that I didn't have much stair climbing data to work with. Also, with the project I really saw the value of confusion matrices and false negatives/positives vs straight up classification accuracy as an error metric (why can't people just walk, bike, and climb stairs at equal frequencies?).	\N	Michael Hu	https://github.com/TheMichaelHu/SPADES_NN	\N	/images/physicalactivityclassification.png	2016-12-05	2	1	2017-08-27 23:19:13.687739	2017-08-31 03:35:58.214331
+8	Reddit Recommender	item-item collaborative filtering for subreddits	Amazon has a pretty neat item recommendation system, but you know what's cooler than material possessions? Subreddits! For this project for my algorithms class, my team applied item-item collaborative filtering to a universe of 100 subreddits. Using the last 100 users who had commented on each subreddit, and each user's last 100 comments in our universe, we constructed vectors to represent each subreddit in some high dimensional space (probably 100th since that fits the pattern, also fairly sure I didn't know about dim reduction back then). We then used cosine distance to compute how similar each subreddit was with each other one.\n\nPeople who like `r/trees` also like `r/gameofthrones`, so that's a thing. 	\N	Michael Hu, Yvette Kim, Jordi Lotito	https://github.com/TheMichaelHu/redditRecommender	\N	/images/redditrecommender.jpg	2015-08-24	4	5	2017-08-27 22:19:34.441903	2017-09-01 02:27:22.467857
+22	Space Invaders	a java clone of the original game, but with much more ridiculous gameplay	For Fundamentals of Computer Science II, a classmate and I designed our own full-featured version of Space Invaders using Java and a drawing library. Features included:\n* Score, lives, levels\n* Aliens that take multiple hits\n * A shooting player and aliens that shoot back\n * Defences\n * Powerups(speed+, multi-shot) and bonuses(ufo)\n * Authentic alien movement\n\nObviously some of these features are not canon, those features are improvements.\n\n<div class="img-wrapper"><img class="summary-img" src="/images/spaceinvaders2.jpg" /></div>	\N	Michael Hu, Tracey Lum	\N	\N	/images/spaceinvaders.jpg	2014-04-16	4	9	2017-08-27 23:47:30.52735	2017-08-30 03:42:48.1653
+16	Poker Bot	using monte carlo algorithms and machine learning to lose horribly against other poker bots	For my AI class, my team built a poker bot to compete on [TheAIGames.com](http://theaigames.com/)! A lot of bots on the site have hard-coded strategies (if my hand rating is x, do y), but we opted to use Monte-Carlo tree search and an online learning opponent model. The idea was to randomly play out possibilities and perform the best one while also observing the opponent bots and learning which decisions they make. The opponent model's moves are what determines which path every other level of the tree will take (it's a minimax tree). The base opponent model was trained on a dataset of professional poker games. \n\n<div class="img-wrapper"><img src="/images/pokerbot2.gif" /></div>\n\nDue to how infrequently games are played on the competition website, we didn't get to observe how much impact online learning had on our poker bot. What we did get to observe, however, was our bot getting wrecked by about 40-50% of the competition using the base opponent model. Without a good model of what the opponent will do, a lot of it just came down to luck.	\N	Pasha Sadikov, Michael Hu, Matt Yudysky	\N	\N	/images/pokerbot.png	2016-11-04	4	5	2017-08-27 23:01:06.950957	2017-08-31 03:54:23.523147
+15	Pinyinify	chrome extension that replaces Chinese characters with their phonetic spellings	This is a Google Chrome extension I made that that traverses the DOM of web pages I visit and replaces any Chinese characters with their phonetically spelled-out equivalents(pinyin). Chrome extensions use JSON to organize information about the extension and javascript for most everything else.\n\nI originally intended to use some sort of API to do the translation from Chinese characters to pinyin but Google charges money to use theirs and the few others I found only offered translation to other languages. I ended up downloading the entirety of the Unihan database and making a parser to grab only Chinese characters and their corresponding unicodes and storing the pairwise values in a hash.\n\n<div class="img-wrapper"><img class="summary-img" src="/images/pinyinify2.jpg" /></div>	\N	Michael Hu	https://github.com/TheMichaelHu/pinyinify	https://chrome.google.com/webstore/detail/pinyinify/ilgkgfbgiempllndljggnmblmcajbcee	/images/pinyinify.jpg	2016-07-28	5	3	2017-08-27 22:52:47.099536	2017-08-30 03:18:30.165203
+7	Playlistr	it's like chromecasting youtube but free, global, and (now) broken	Playlstr is an online playlist webapp hosted on Heroku. I worked on its developement along with four other Northeastern students at [HackBeanpot](http://hackbeanpot.com) 2014. The app was built using Node.js and uses Youtube and SoundCloud API to produce results for the string the client searches for. Using the user page, clients can queue up songs for the playlist which can then be listened to on the listener page. Searching a string will produce two lists for the client to choose from: most viewed Youtube videos from that search and most popular SoundCloud songs.\n\nThis app is only meant to support one listener at a time, although in theory it's possible to have multiple listeners without cross-contamination. This app also works as a song sharing site, clients would queue up songs they want to share with strangers on the user page and then listen to a random song from somebody else on the listener page.\n\n*Edit: As of April 20, 2015, Youtube API v2 has been retired. Because Youtube API v3 does not support anonymous queries, Playlistr's Youtube search features no longer work. I'll be attempting to integrate the new API as a later project.*	\N	Tommy Hu, Geoffrey Wong, Matthew Coleman, Michael Hu, Gasper Chan	https://github.com/tomxhu/playlistmaker	http://playlstr.herokuapp.com/	/images/playlstr.jpg	2015-02-09	1	5	2017-08-27 22:13:49.108209	2017-08-30 03:28:50.591792
+21	Frisbee Aimbot Algorithm	an aimbot in real life with frisbees	On my robotics team, I spent some time working on Machine Vision. During the 2013 season, robots were tasked with launching frisbees through rectangular goals lined with retro-reflective fabric. Using data from the robot and an [MIT paper on frisbee physics](http://scripts.mit.edu/~womens-ult/frisbee_physics.pdf), I wrote a java app to predict the trajectory of a frisbee launched from our robot.\n\n<div class="img-wrapper"><img class="summary-img" src="/images/frisbee2.jpg" /></div>\n\nAlso, using API from a program called [RoboRealm](http://www.roborealm.com/) we were able to get the measurements of a target goal as seen from the camera mounted on the robot. Using known constants such as the height and angle of the camera, the camera's field of view, robot's location, and field measurements in conjunction with the data from RoboRealm, we were able to get the camera's distance from the target goal with an error of a few inches. Knowing the distance from the goal and the launcher's angle provided suffcient information to calculate the necessary velocity for a frisbee to be scored.	\N	Anish Thilagar, Michael Hu, Greg Partridge	\N	\N	/images/frisbee.jpg	2013-01-08	3	8	2017-08-27 23:43:58.340591	2017-08-30 03:35:15.986622
+6	Personal Website	it's this, you're looking at it	During my time at [BookBub](https://www.bookbub.com), I was spoiled rotten by the plethora of awesome tooling we had for streamlining web development. For this third iteration of my portfolio website, I went all out with hot reloading with Webpack, linting with eslint, React and a material design library, a backend for storing and filtering/ordering my projects, hosting and continuous deployment on heroku, etc. The result ended up being tiers above the static sites I used to host on github pages.\n\nAt some point when searching for a job isn't the top thing on my mind, I'm planning to add sections to showcase some of my photoshop/photography projects and maybe blog posts. In all likelihood, I'll probably just write scrapers for Medium and Imgur or something so I don't have to host everything myself.	\N	Michael Hu	https://github.com/TheMichaelHu/rails-react-website	http://www.michaelhu.net	/images/personalwebsite.png	2017-07-27	5	1	2017-08-27 22:07:37.156493	2017-08-30 21:09:21.40798
+5	ScholarJet	platform for creating a new form of scholarship	ScholarJet is a platform for creating, funding, and administering action-based scholarships (scholarships that break the age-old mold of requiring a written essay). I joined the team as its second developer in March 2016 and saw some amazing accomplishments from the team before leaving for grad school over a year later.\n\n<div class="img-wrapper"><img src="/images/scholarjet2.jpg" /></div>\n\nDesigning the ScholarJet platform was a huge exercise of the knowledge the members of the development team had acquired in class and on co-op. We tackled technical challenges such as redesigning data models after pivoting, hosting not just our code on AWS but also images and video content, 3rd party software integration, ramping up new developers, CI and automated testing, and coordinating work through scrum.\n\n<div class="img-wrapper"><img src="/images/scholarjet3.jpg" /></div>\n\nJust to list some highlights during my time with ScholarJet: we won [VietChallenge 2017](http://vietchallenge.org/), got into [MassChallenge](http://boston.masschallenge.org/), and even had a post written about us on [Microsoft's blog](https://blogs.microsoft.com/newengland/2017/07/18/funding-the-future-with-action-based-scholarships-smarter-in-the-city-startup-scholarjet/).	\N	ScholarJet Team	\N	https://scholarjet.com/	/images/scholarjet.jpg	2017-07-08	3	1	2017-08-27 22:04:12.134991	2017-08-30 21:35:51.61483
+1	Alternative Scrolling	because scrolling with your fingers was so 2016	*Hi there! I made this as a submission for [Boston Stupid Shit No One Needs & Terrible Ideas Hackathon](https://bostonstupidhackathon.com/) (although I never actually submitted it), so if you think this idea is stupid and terrible...__good__*\n\nAlternative Scrolling is a chrome extension that let's you scroll according to the pitch your microphone picks up. This is done via a separate tab that uses `getUserMedia()` and some code to take chunks of audio and figure out the pitch. The lower your pitch, the faster you will scroll downwards and vice versa.\n\n<div class="img-wrapper"><video controls><track kind="captions" /><source src="/videos/alternativescrolling2.mp4" type="video/mp4" />Your browser does not support HTML5 video.</video></div>\n\nI originally wanted to do something with computer vision as well (close your eyes to scroll, open to stop...or vice versa...whichever sounds stupider), but I think this was already enough of a waste of time.	\N	Michael Hu	https://github.com/TheMichaelHu/AlternativeScrolling	\N	/images/alternativescrolling.png	2017-06-24	1	5	2017-08-27 21:20:57.621104	2017-08-31 02:06:00.517666
+2	michael (hu)bot	personal assistant for facebook messenger, obscure bordering on esoteric pun	As the name might(?) imply, this Facebook Messenger bot was modeled after Github's [hubot](https://hubot.github.com/). What this means is michael (hu)bot is not merely a rails server interfacing with the Messenger API; this is a platform for any number of ruby chatbot scripts. All the scripts need to do is provide a matching function that takes the input string, and produces responses when a string matches. The script in the image above is a script I wrote with a regex matcher for [MBTA](https://t.mbta.com/schedules/subway) routes that responds with the next subway/bus/ferry set to arrive at a destination that fuzzy matches the one provided.\n\nOne of my favorite hubot scripts I've encountered thus far in my life is one that sends bee gifs when prompted.\n\n<div class="img-wrapper"><img src="/images/michaelhubot2.png" /></div>\n\nAlthough I don't think this bot has sufficient functionality yet, having the ability to write up chatbot scripts as I need them is very handy. In the future, I'd like to swap out the default response (when no script matchers match) with the responses of a model trained with my past text conversations.	\N	Michael Hu	https://github.com/TheMichaelHu/michaelhubot	https://www.facebook.com/michaelhubot	/images/michaelhubot.png	2017-06-01	5	2	2017-08-27 21:36:10.619919	2017-08-31 02:32:17.109594
+18	Book Genre Clustering	a weak attempt at redefining book genres and subgenres using hierarchial clusting and amazon reviews and less than 8GB of memory	For CS 6220: Data Mining Techniques, a course on data mining and unsupervised machine learning, I used a [dataset](http://jmcauley.ucsd.edu/data/amazon/) containing ~22.5 million ratings of ~8 million books on Amazon to hierarchically cluster books in order to determine categories of books users are interested in at various granularities (I was working at [BookBub](https://www.bookbub.com) part-time at the time, in case the premise seems strange). The approach I used was  like doing collaborative filtering, but giving up halfway (so I guess it's just SVD) and clustering the resulting books x book categories matrix. I'm...not going to go into details about tuning params, choosing the linkage, how I measured distance, etc; that's out of the scope of a simple project description.\n\n<div class="img-wrapper"><img src="/images/bookgenreclustering2.png" /></div>\n\nAs expected, the 8GB of RAM in my laptop was not able to even scratch the service of doing SVD on 22 million rows of data, so I was only able to use a sample of 100k ratings. That's like 0.4% of the available data, and I don't think I can assume amazon ratings are normally distributed or anything haha. Anyways, the results were nothing exciting given the size of the sample. I somehow managed to cluster all the harry potter series together with k=4, but selectively choosing Harry Potter reviews to throw into my sample is really janky stuff.	\N	Michael Hu	https://github.com/TheMichaelHu/BookGenres	\N	/images/bookgenreclustering.png	2017-04-19	4	1	2017-08-27 23:11:31.75973	2017-08-31 03:03:03.931988
+14	Rooster	an internet-enabled alarm clock social network that let's you wake up your friends	*This was a submission for HuskyHacks 2017.*\n\nRooster is an internet-enabled alarm clock that allows your friends to wake you up if you oversleep through our web interface built with ruby on rails. By creating an account, registering your alarm clock's id (rigged with a Particle Photon), and adding friends, your friends are able to record and send messages that will automatically play on your alarm clock.\n\n<div class="img-wrapper"><img src="/images/rooster2.png" /></div>\n\n...or at least that was the plan. Unfortunately, we ran into a lot of issues encoding audio files captured from the rails app, and decoding them on the Particle Photon without distorting the audio. In particular, I think we really underestimated the difficultly of playing audio through a speaker, as that's something people typically take for granted on our computers. Instead, the user can just leave their laptop open to our webapp and achieve the same results, but that isn't nearly as exciting of a hack.	\N	Michael Hu, Naoki Yokoyama, Joanne Truong, Matt Dang	https://github.com/TheMichaelHu/PickyRooster	http://pickyrooster.herokuapp.com/	/images/rooster.png	2016-10-02	1	10	2017-08-27 22:48:31.699634	2017-08-31 23:58:28.285879
+17	Medium-Rare	simple blogging application like Medium but not as hot right now	Medium-Rare (for some reason no one in class seemed to appreciate the name) was a blogging application my team built for my database class. It does everything you'd expect a blogging application with the inability to format text to do (accounts, roles, comments, likes, CRUD posts and blogs, etc).\n\n<div class="img-wrapper"><img src="/images/mediumrare2.png" /></div>\n\nNothing really exciting here other than the fact that trying to make a Rails app while explicitly trying to write raw SQL (postgreSQL not mySQL, don't tell my prof) instead of using active record wherever possible feels like committing a cardinal sin with every migration/controller.\n\n<div class="img-wrapper"><img src="/images/mediumrare3.png" /></div>\n\nI'd like to spin a blog off my personal website at some point, but this project is so bogged down with random bits of raw SQL, I'd rather start from scratch or just scrape a medium account and write custom views. You can tell I really enjoyed this project.	\N	Michael Hu, Miranda Chiu, Nancy Li	https://github.com/mirdathebirda/Database-Portfolio-Project	https://vast-peak-35773.herokuapp.com/	/images/mediumrare.png	2016-12-07	4	6	2017-08-27 23:06:05.28026	2017-08-31 03:17:52.486277
+12	Picky Husky	choose NEU dining hall foods to follow, receive a text when they're available	*This was a submission to HuskyHacks 2016*\n\nPicky Husky is a web application built with Ruby on Rails that solves the age old question: "Which dining hall is serving chicken tenders today?". By scraping 85 days worth of dining hall menus from [Northeastern Dining](https://nudining.com/), we accumulated a database of thousands (yes, thousands) of food items students can follow through our web interface. Students are able to search, sort, and filter food items and get various interesting statistics on them such as rarity or popularity.\n\n<div class="img-wrapper"><img src="/images/pickyhusky2.png" /></div>\n\nEvery morning, our app checks Northeastern Dining for the menus at each dining hall, if a food a student is following is offered, we send them a text using Twilio.\n\n<div class="img-wrapper"><img src="/images/pickyhusky3.png" /></div>	\N	Michael Hu, Naoki Yokoyama, Joanne Truong, Long Lin	https://github.com/TheMichaelHu/PickyHusky	http://pickyhusky.herokuapp.com/	/images/pickyhusky.png	2016-04-04	1	4	2017-08-27 22:41:10.938394	2017-09-01 01:14:52.167431
+11	Round Robin Bingo	online bingo where everyone takes turns calling out numbers	*This is one of my favorite projects, mostly because of __websockets__(sort of)!!*\n\nFor an arcade-type event, I was asked by Northeastern's Vietnamese Student Association to make a multiplayer competitive game members could play for tickets. The result was a variation on bingo where players took turns picking a number to call to everyone, players have to get 5 bingos on their board to win (since getting a single bingo only takes 5n turns with n players at most). I implemented a room system so that we could have several games being played concurrently. On the homepage, one has the option of either creating a new room or joining one based on a 5-character randomly generated room code. I achieved something similar to websockets (since Rails 4 doesn't support actual ones) by spinning up a pub/sub redshift server separate from my main rails server. The result is rooms being able to update in real time whenever a player joins and the `Let's Play Bingo` button allowing a single player to transitiion everyone in the room to the bingo game proper.\n\n<div class="img-wrapper"><img src="/images/bingo2.png" /></div>\n\nDuring the actual game, players are able to click on tiles on their board to call out numbers on their turn. Once a number is called, the boards of all players are automatically updated to reflect that. Once a player scores five simultaneous bingos, they win and can send a victory message to all the losers (my favorite part).\n\n<div class="img-wrapper"><img src="/images/bingo3.png" /></div>\n\n	\N	Michael Hu, Miranda Chiu	https://github.com/TheMichaelHu/vsaBingo	http://bingo.michaelhu.net	/images/bingo.png	2016-03-26	3	3	2017-08-27 22:36:49.876145	2017-09-01 01:33:08.365419
+9	Ambeyonce	leveraging machine learning to augment your mood with an appropriate Beyonce song	*This was a submission for [HackBeanpot](http://hackbeanpot.com/) 2016*\n\nAmbeyonce is a chrome extension that uses [indico](https://indico.io/)'s image sentiment analysis API to play a Beyonce song suiting your mood. The input for their model is captured using a webcam/laptop camera, which is a surprisingly non-trivial thing to do with a chrome extension (hence the ugly seperate tab). Nobody wants a happy song to play when you're depressed, or a mood-killing, depressing song to play when you're bursting with excitement. Ambeyonce makes sure the ambiance of your life stays constant until you change it...because that's good...sometimes?\n\nPlot twist: I just like Beyonce, okay?	\N	Michael Hu, Nikolai Wotton, Quan Do, Kevin Luo	https://github.com/TheMichaelHu/Ambeyonce	https://chrome.google.com/webstore/detail/ambeyonce/afpcaigpflpbboiofbehpfhgjhjjhjmj	/images/ambeyonce.jpg	2016-01-24	1	10	2017-08-27 22:27:24.012988	2017-09-01 01:57:21.463841
+3	SPADES Data Visualizer	big data, tiny RAM	This was a project I did for Northeastern's [mHealth Research Group](https://mhealth.ccs.neu.edu/). The basic problem was creating a custom visualizer for the accelerometer data our team was collecting from several tens of volunteers over 3-month periods each. The above image is a graph of 10-15 sensors over 3 months for a single volunteer, and, because we were recording data over 40 times a minute per sensor (not to mention processing the data), it took a fair amount of memory to create.\n\nThis project involved a lot of work parallelizing tasks and drawing days in batches. We also had to support cli flags for drawing certain ranges of data or specific sensors. At one iteration, we even tried piping the data to a 3rd party online plotting service...it wasn't great for medium/large datasets. I ended up just writing a drawer using java swing (never again).	\N	Michael Hu, Raein Hashemi	https://github.com/TheMichaelHu/SPADES_data_visualizer	\N	/images/spadesdatavisualization.png	2015-11-23	2	1	2017-08-27 21:44:24.053434	2017-09-01 02:16:04.113775
+10	Hamster Gambling	it's like roulette but significantly more adorable	*fyi, the demo for the project is an executable `.jar`. You may need to run `java -jar ./hamster.jar` if double clicking fails*\n\nFor a casino night, Northeastern's Vietnamese Student Association asked me to create a fun/adorable gambling game for members to play. [Well...hamsters are cute!](https://www.youtube.com/watch?v=SwwyZgz0GGo) For those who didn't watch the video, I basically made roulette with hamsters, but minus the animal cruelty since my hamsters aren't real.\n\n<div class="img-wrapper"><img src="/images/hamster2.png" /></div>\n\nI built this with a java library called [ImpWorld](https://www2.ccs.neu.edu/javalib/ImpWorld/). Fun fact, image rotation doesn't actually exist in ImpWorld, so I had to do some fancy trig to make the hamsters look like they're facing various directions. There are hotkeys for spawning more hamsters or hamster houses, but the real gem in this game is the hamster AI. I threw a lot of random rodent logic in there, but the best bit (imo) is when a hamster tries to enter a house, there's a non-zero chance it will back out and go somewhere completely different...to the distress of everyone who had bet on that house.	\N	Michael Hu	https://github.com/TheMichaelHu/HamsterGameVSA	/demos/hamster.jar	/images/hamster.png	2015-02-15	3	8	2017-08-27 22:33:13.312358	2017-09-01 02:46:51.853128
+13	Picky Pusheen	tinder for just finding someone free to run errands with	*Fun fact: We [won](https://devpost.com/software/picky-pusheen) the Best NativeScript App for IOT award at [HackMIT](https://hackmit.org/) 2016!*\n\n*Fun fact 2: I was one of the first 50 solvers of HackMIT's 2016 puzzle, which got us a guaranteed spot at the hackathon (after not being able to get in the previous 3 years). Also, one of my slack messages got quoted in the [puzzle solutions](https://medium.com/hackmit-stories/the-hackmit-2016-puzzle-3b7f9c97455b).*\n\n<div class="img-wrapper"><img src="https://cdn-images-1.medium.com/max/1600/1*cB4zhMY7rxX-EVbRHWKtcg.png" /></div>\n\nPicky Pusheen is Tinder meets the Amazon Dash button for socially awkward people. In less confusing words: We built a mobile app using [NativeScript](https://www.nativescript.org/) and a Ruby on Rails backend that lets users seeking to run menial errands (getting dinner, jogging, getting groceries) to discover each other without all the awkward socializing beforehand.\n\n<div class="img-wrapper"><img src="/images/pickypusheen4.png" /></div>\n\nA user seeking to, say, go grocery shopping can make a post about it. Once it's live, their friends are able to see it and swipe right if they would like to join in. We took the idea one step further by 3D printing Picky Pusheen Buttons that are internet enabled (thanks to the Particle Photon) and able to be programmed via the app to automatically post a certain task when pressed. The idea behind this is to simplify the posting of frequently done tasks like "Groceries at 12pm" or "30 minute jog at 6:30pm".\n\n<div class="img-wrapper"><img src="/images/pickypusheen2.jpeg" /></div>\n\nAlso the buttons *meow* when you press them!\n\n<div class="img-wrapper"><img src="/images/pickypusheen3.png" /></div>	\N	Michael Hu, Naoki Yokoyama, Joanne Truong, Matt Dang	https://github.com/TheMichaelHu/PickyPusheen	\N	/images/pickypusheen.png	2016-09-18	1	1	2017-08-27 22:45:11.507485	2017-09-01 02:52:05.660731
+\.
+
+
+--
+-- Name: projects_id_seq; Type: SEQUENCE SET; Schema: public; Owner: michael
+--
+
+SELECT pg_catalog.setval('projects_id_seq', 22, true);
+
+
+--
+-- Data for Name: projects_tools; Type: TABLE DATA; Schema: public; Owner: michael
+--
+
+COPY projects_tools (project_id, tool_id) FROM stdin;
+1	1
+1	2
+2	3
+2	4
+2	5
+2	8
+3	9
+10	9
+21	9
+22	9
+20	9
+20	18
+18	23
+18	24
+18	21
+18	22
+19	23
+19	24
+19	21
+19	22
+4	1
+4	10
+5	11
+5	1
+5	12
+5	9
+5	13
+5	14
+5	15
+5	16
+6	26
+6	1
+6	4
+6	3
+6	20
+6	14
+6	15
+6	16
+6	19
+7	27
+7	1
+7	6
+7	15
+7	16
+8	23
+9	1
+9	2
+9	22
+11	4
+11	1
+11	3
+11	15
+11	16
+12	4
+12	1
+12	3
+12	15
+12	16
+12	28
+13	4
+13	1
+13	3
+13	15
+13	17
+13	29
+13	30
+13	31
+13	32
+14	4
+14	1
+14	3
+14	15
+14	29
+14	32
+15	2
+15	1
+16	23
+16	22
+17	4
+17	3
+17	15
+17	16
+\.
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: michael
+--
+
+COPY schema_migrations (version) FROM stdin;
+20170827175429
+20170827175435
+20170827175439
+20170827175557
+\.
+
+
+--
+-- Data for Name: tools; Type: TABLE DATA; Schema: public; Owner: michael
+--
+
+COPY tools (id, name, created_at, updated_at) FROM stdin;
+1	JavaScript	2017-08-27 23:48:36.266629	2017-08-27 23:48:36.266629
+2	Chrome Extension	2017-08-27 23:48:45.693499	2017-08-27 23:48:45.693499
+3	Ruby on Rails	2017-08-27 23:49:30.018922	2017-08-27 23:49:30.018922
+4	Ruby	2017-08-27 23:49:33.045385	2017-08-27 23:49:33.045385
+5	Facebook	2017-08-27 23:49:43.427122	2017-08-27 23:49:43.427122
+6	Youtube	2017-08-27 23:49:48.015471	2017-08-27 23:49:48.015471
+7	Yelp	2017-08-27 23:49:51.132942	2017-08-27 23:49:51.132942
+8	Chatbot	2017-08-27 23:50:08.499135	2017-08-27 23:50:08.499135
+9	Java	2017-08-27 23:50:13.556427	2017-08-27 23:50:13.556427
+10	PHP	2017-08-27 23:50:40.051347	2017-08-27 23:50:40.051347
+11	Angular 2	2017-08-27 23:50:58.374825	2017-08-27 23:50:58.374825
+12	TypeScript	2017-08-27 23:51:13.362471	2017-08-27 23:51:13.362471
+13	Java EE	2017-08-27 23:51:31.924869	2017-08-27 23:51:31.924869
+14	Webpack	2017-08-27 23:51:38.174301	2017-08-27 23:51:38.174301
+15	SQL	2017-08-27 23:51:42.067375	2017-08-27 23:51:42.067375
+16	Web Application	2017-08-27 23:51:47.798201	2017-08-27 23:51:47.798201
+17	Mobile Application	2017-08-27 23:51:59.510061	2017-08-27 23:51:59.510061
+18	Android Wear Application	2017-08-27 23:52:26.307985	2017-08-27 23:52:26.307985
+19	ES6	2017-08-27 23:52:33.77755	2017-08-27 23:52:33.77755
+20	ESLint	2017-08-27 23:52:56.241206	2017-08-27 23:52:56.241206
+21	scikit-learn	2017-08-27 23:53:15.059861	2017-08-27 23:55:16.409011
+22	Machine Learning	2017-08-28 00:14:54.743198	2017-08-28 00:14:54.743198
+23	Python	2017-08-28 00:15:50.766304	2017-08-28 00:15:50.766304
+24	NumPy	2017-08-28 00:15:55.615829	2017-08-28 00:15:55.615829
+26	React	2017-08-28 00:22:15.604868	2017-08-28 00:22:15.604868
+27	Node.js	2017-08-28 00:24:14.857389	2017-08-28 00:24:14.857389
+28	Twilio	2017-08-28 00:31:20.686147	2017-08-28 00:31:20.686147
+29	Particle Photon	2017-08-28 00:34:15.76168	2017-08-28 00:34:15.76168
+30	3D Printing	2017-08-28 00:34:15.78199	2017-08-28 00:34:15.78199
+31	NativeScript	2017-08-28 00:34:15.789155	2017-08-28 00:34:15.789155
+32	IoT Device	2017-08-28 00:34:15.795167	2017-08-28 00:34:15.795167
+\.
+
+
+--
+-- Name: tools_id_seq; Type: SEQUENCE SET; Schema: public; Owner: michael
+--
+
+SELECT pg_catalog.setval('tools_id_seq', 32, true);
+
+
+--
+-- Data for Name: types; Type: TABLE DATA; Schema: public; Owner: michael
+--
+
+COPY types (id, name, created_at, updated_at) FROM stdin;
+1	hackathon	2017-08-27 21:17:02.714112	2017-08-27 21:17:02.714112
+2	research	2017-08-27 21:17:26.758888	2017-08-27 21:17:26.758888
+3	organization	2017-08-27 21:17:33.79895	2017-08-27 21:17:33.79895
+4	class	2017-08-27 21:17:40.007074	2017-08-27 21:17:40.007074
+5	personal	2017-08-27 21:17:44.358736	2017-08-27 21:17:44.358736
+\.
+
+
+--
+-- Name: types_id_seq; Type: SEQUENCE SET; Schema: public; Owner: michael
+--
+
+SELECT pg_catalog.setval('types_id_seq', 5, true);
+
+
+--
+-- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: michael
+--
+
+ALTER TABLE ONLY ar_internal_metadata
+    ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: projects projects_pkey; Type: CONSTRAINT; Schema: public; Owner: michael
+--
+
+ALTER TABLE ONLY projects
+    ADD CONSTRAINT projects_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: michael
+--
+
+ALTER TABLE ONLY schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: tools tools_pkey; Type: CONSTRAINT; Schema: public; Owner: michael
+--
+
+ALTER TABLE ONLY tools
+    ADD CONSTRAINT tools_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: types types_pkey; Type: CONSTRAINT; Schema: public; Owner: michael
+--
+
+ALTER TABLE ONLY types
+    ADD CONSTRAINT types_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_projects_on_date; Type: INDEX; Schema: public; Owner: michael
+--
+
+CREATE INDEX index_projects_on_date ON projects USING btree (date);
+
+
+--
+-- Name: index_projects_on_rank; Type: INDEX; Schema: public; Owner: michael
+--
+
+CREATE INDEX index_projects_on_rank ON projects USING btree (rank);
+
+
+--
+-- Name: index_projects_on_title; Type: INDEX; Schema: public; Owner: michael
+--
+
+CREATE INDEX index_projects_on_title ON projects USING btree (title);
+
+
+--
+-- Name: index_projects_on_type_id; Type: INDEX; Schema: public; Owner: michael
+--
+
+CREATE INDEX index_projects_on_type_id ON projects USING btree (type_id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
