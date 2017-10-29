@@ -1,0 +1,104 @@
+<div class="survey">
+  <div class="container">
+    <h1>Youtube Video Annotator</h1>
+    <% if !params[:id] %>
+      <div class="form-col col">
+        <p>Please pass the youtube video id in as a query param with the key <i>id</i>.</p>
+        <p>ie. <%= request.original_url %>?id=lNRjt4rCymM</p>
+      </div>
+    <% else %>
+      <div class="form-col col">
+        <div id="player" class="center-block"></div>
+        <!-- add hidden fields -->
+
+        <div class="survey-form">
+          <h2>Create an Annotation</h2>
+          <%= form_tag("/annotations", method: "post", remote: false) do %>
+            <%= hidden_field(:video_id, :id, value: params[:id]) %>
+            <%= label_tag(:start, "Start:") %>
+            <%= text_field_tag(:start) %>
+            <button id="startSet" type="button">Set</button>
+            <button id="startClear" type="button">Clear</button>
+
+            <br>
+            <%= label_tag(:end, "End:") %>
+            <%= text_field_tag(:end) %>
+            <button id="endSet" class="btn" type="button">Set</button>
+            <button id="endClear" class="btn" type="button">Clear</button>
+
+            <p>Label:</p>
+            <%= select_tag(:label, options_for_select([['Happy', 'happy'], ['Sad', 'sad'], ['Anger', 'anger'], ['Fear', 'fear']], 1)) %>
+
+            <p>Visual importance (1 being not important):</p>
+            <%= radio_button_tag(:vis_imp, "1") %>
+            <%= label_tag(1, "1") %>
+            <%= radio_button_tag(:vis_imp, "2") %>
+            <%= label_tag(2, "2") %>
+            <%= radio_button_tag(:vis_imp, "3") %>
+            <%= label_tag(3, "3") %>
+            <%= radio_button_tag(:vis_imp, "4") %>
+            <%= label_tag(4, "4") %>
+            <%= radio_button_tag(:vis_imp, "5") %>
+            <%= label_tag(5, "5") %>
+
+            <p>Audio importance (1 being not important):</p>
+            <%= radio_button_tag(:aud_imp, "1") %>
+            <%= label_tag(1, "1") %>
+            <%= radio_button_tag(:aud_imp, "2") %>
+            <%= label_tag(2, "2") %>
+            <%= radio_button_tag(:aud_imp, "3") %>
+            <%= label_tag(3, "3") %>
+            <%= radio_button_tag(:aud_imp, "4") %>
+            <%= label_tag(4, "4") %>
+            <%= radio_button_tag(:aud_imp, "5") %>
+            <%= label_tag(5, "5") %>
+
+            <p>Valence (1 being very negative):</p>
+            <%= radio_button_tag(:valence, "1") %>
+            <%= label_tag(1, "1") %>
+            <%= radio_button_tag(:valence, "2") %>
+            <%= label_tag(2, "2") %>
+            <%= radio_button_tag(:valence, "3") %>
+            <%= label_tag(3, "3") %>
+            <%= radio_button_tag(:valence, "4") %>
+            <%= label_tag(4, "4") %>
+            <%= radio_button_tag(:valence, "5") %>
+            <%= label_tag(5, "5") %>
+
+            <p>Arousal (1 being low arousal):</p>
+            <%= radio_button_tag(:arousal, "1") %>
+            <%= label_tag(1, "1") %>
+            <%= radio_button_tag(:arousal, "2") %>
+            <%= label_tag(2, "2") %>
+            <%= radio_button_tag(:arousal, "3") %>
+            <%= label_tag(3, "3") %>
+            <%= radio_button_tag(:arousal, "4") %>
+            <%= label_tag(4, "4") %>
+            <%= radio_button_tag(:arousal, "5") %>
+            <%= label_tag(5, "5") %>
+
+            <br>
+            <%= submit_tag("Create") %>
+          <% end %>
+        </div>
+    </div>
+      <div class="annotations-col col">
+        <h3>Annotations</h3>
+        <ul>
+          <% Video.find_by(yt_id: params[:id])&.annotations.order(:start)&.each do |annotation|%>
+            <li>
+              <div class="annotation">
+                <div class="close-btn">
+                  <%= button_to "x", { controller: "annotations", action: "destroy", id: annotation.id },
+                                    method: :delete, data: { confirm: "Are you sure?" } %>
+                </div>
+                <p><%= annotation.start %> - <%= annotation.end %></p>
+                <p><%= annotation.label %></p>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+</div>
