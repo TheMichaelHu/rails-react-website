@@ -1,0 +1,37 @@
+// Place all the styles related to the Surveys controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.survey {
+  .container {
+    display: grid;
+    grid-template-columns: 75% auto;
+
+    .col {
+      padding: 10px;
+    }
+
+    .form-col {
+      grid-column-start: 1;
+      grid-column-end: span 1;
+    }
+
+    .annotations-col {
+      grid-column-start: 2;
+      grid-column-end: span 1;
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+
+        .annotation {
+          border: 3px solid white;
+          padding: 5px;
+
+          .close-btn {
+            float: right;
+          }
+        }
+      }
+    }
+  }
+}
