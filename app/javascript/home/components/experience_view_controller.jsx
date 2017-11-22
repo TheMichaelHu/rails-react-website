@@ -48,16 +48,6 @@ export class ExperienceVc extends React.Component {
         ],
       },
       {
-        company:  "mHealth Research Group",
-        location: "Boston, MA",
-        tenure:   "Aug 2015 - Jan 2017",
-        title:    "Research Assistant",
-        bullets:  [
-          "Researched viability of using neural nets over engineered features for classifying everyday activities using phones and smart watches",
-          "Created java visualization tool for processing and plotting several million accelerometer datapoints from multiple sensors captured over several months",
-        ],
-      },
-      {
         company:  "PowerAdvocate Inc",
         location: "Boston, MA",
         tenure:   "Jan 2015 - Jun 2015",
@@ -86,6 +76,29 @@ export class ExperienceVc extends React.Component {
         bullets:  [
           "Ported company’s JavaScript library to java for use on Android",
           "Researched viability of converting company’s GoJS tool into an Android diagramming library",
+        ],
+      },
+    ];
+
+    this.researchExperiences = [
+      {
+        company:  "Cornell University",
+        location: "Ithaca, NY",
+        tenure:   "Sep 2017 - Present",
+        title:    "Research Assistant (Human-Robot Collaboration and Companionship Lab)",
+        bullets:  [
+          "Designing a robotic video watching companion that is trained to react to videos using Keras, Tensorflow, scikit-learn, etc",
+          "Researching different approaches to tackling a very open-ended machine learning/HCI problem",
+        ],
+      },
+      {
+        company:  "Northeastern University",
+        location: "Boston, MA",
+        tenure:   "Aug 2015 - Jan 2017",
+        title:    "Research Assistant (mHealth Research Group)",
+        bullets:  [
+          "Researched viability of using neural nets over engineered features for classifying everyday activities using phones and smart watches",
+          "Created java visualization tool for processing and plotting several million accelerometer datapoints from multiple sensors captured over several months",
         ],
       },
     ];
@@ -161,6 +174,9 @@ export class ExperienceVc extends React.Component {
         </Section>
         <Section title="Work Experience">
           <ExperienceCollection experiences={this.workExperiences} />
+        </Section>
+        <Section title="Research Experience">
+          <ExperienceCollection experiences={this.researchExperiences} />
         </Section>
         <Section title="Volunteer Experience">
           <ExperienceCollection experiences={this.volunteerExperiences} />
