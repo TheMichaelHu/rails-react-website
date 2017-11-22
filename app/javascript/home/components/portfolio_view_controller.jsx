@@ -117,6 +117,9 @@ export class PortfolioVc extends React.PureComponent {
           />
         </Element>
         <Element name="about">
+          <div className="img-wrapper">
+            <img className="summary-img" src="/images/me.jpg" alt="it me" />
+          </div>
           <Section title="About">
             <p>I&apos;m a grad student at Cornell University grabbing an MEng in computer science. My background is that of a web developer with some machine learning here or there, but I&apos;m really hoping to flex my machine learning and distributed computing skills during my time in grad school.</p>
             <p>This site hosts something that might resemble a resume, but its true purpose is to organize my software projects over the years. I&apos;m also planning to grow a blog off it at some later point.</p>
