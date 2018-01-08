@@ -83,21 +83,23 @@
         </div>
     </div>
       <div class="annotations-col col">
-        <h3>Annotations</h3>
-        <ul>
-          <% Video.find_by(yt_id: params[:id])&.annotations.order(:start)&.each do |annotation|%>
-            <li>
-              <div class="annotation">
-                <div class="close-btn">
-                  <%= button_to "x", { controller: "annotations", action: "destroy", id: annotation.id },
-                                    method: :delete, data: { confirm: "Are you sure?" } %>
+        <% if Video.find_by(yt_id: params[:id]) %>
+          <h3>Annotations</h3>
+          <ul>
+            <% Video.find_by(yt_id: params[:id])&.annotations.order(:start)&.each do |annotation|%>
+              <li>
+                <div class="annotation">
+                  <div class="close-btn">
+                    <%= button_to "x", { controller: "annotations", action: "destroy", id: annotation.id },
+                                      method: :delete, data: { confirm: "Are you sure?" } %>
+                  </div>
+                  <p><%= annotation.start %> - <%= annotation.end %></p>
+                  <p><%= annotation.label %></p>
                 </div>
-                <p><%= annotation.start %> - <%= annotation.end %></p>
-                <p><%= annotation.label %></p>
-              </div>
-            </li>
-          <% end %>
-        </ul>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
       </div>
     <% end %>
   </div>
