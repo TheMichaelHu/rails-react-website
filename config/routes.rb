@@ -12,11 +12,8 @@ Rails.application.routes.draw do
     end
   end
 
-  # dev only routes to get arund localhost issues
-  if Rails.env.development?
-    resources :surveys, only: [:index]
-    resources :annotations, only: [:create, :destroy]
-  end
+  resources :surveys, only: [:index]
+  resources :annotations, only: [:create, :destroy]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'home#index'
