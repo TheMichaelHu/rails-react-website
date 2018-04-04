@@ -6,6 +6,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import { PortfolioVc } from './portfolio_view_controller';
 import { ProjectVc } from './project_view_controller';
+import { HobbiesVc } from './hobbies_view_controller';
 import '../styles/home_view_controller';
 
 export class HomeVc extends React.Component {
@@ -65,8 +66,20 @@ export class HomeVc extends React.Component {
           {this.renderHeader()}
           <div className="home-content">
             <Switch>
-              <Route exact path="/" component={() => <PortfolioVc open={this.state.openDrawer} />} />
-              <Route path="/project/:id" component={router => <ProjectVc router={router} open={this.state.openDrawer} />} />
+              <Route
+                exact
+                path="/"
+                component={() => <PortfolioVc open={this.state.openDrawer} />}
+              />
+              <Route
+                exact
+                path="/hobbies"
+                component={() => <HobbiesVc open={this.state.openDrawer} />}
+              />
+              <Route
+                path="/project/:id"
+                component={router => <ProjectVc router={router} open={this.state.openDrawer} />}
+              />
             </Switch>
           </div>
           {this.renderFooter()}

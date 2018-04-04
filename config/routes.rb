@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'home/index'
   get 'project/:id', to: 'home#index'
+  get 'hobbies', to: 'home#index'
 
   resources :projects, only: [:index, :show]
 

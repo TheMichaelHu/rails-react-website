@@ -1,0 +1,35 @@
+.hobbies-vc {
+  .hero-wrapper {
+    top: -10vh;
+    left: -10vw;
+    position: relative;
+    margin-bottom: -5vh;
+  }
+
+  .section {
+    padding-top: 50px;
+    padding-bottom: 20px;
+  }
+
+  .snapwidget-wrapper {
+    position:relative;
+    display:inline-block;
+    height:100%;
+    width:100%;
+    min-height: 500px;
+
+    .blocker {
+      position:absolute;
+      height:100%;
+      width:100%;
+      z-index:1;
+      -moz-box-shadow: inset 0 -200px 200px -200px #000000;
+      -webkit-box-shadow: inset 0 -200px 200px -200px #000000;
+      box-shadow: inset 0 -200px 200px -200px #000000;
+    }
+
+    iframe {
+      z-index: 2;
+    }
+  }
+}

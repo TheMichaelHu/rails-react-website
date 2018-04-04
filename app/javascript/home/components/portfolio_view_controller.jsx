@@ -7,6 +7,7 @@ import { IconGroup } from 'shared/components/icon_group';
 import Subheader from 'material-ui/Subheader';
 import FontIcon from 'material-ui/FontIcon';
 import { Element, Link } from 'react-scroll';
+import { Link as RouterLink } from 'react-router-dom';
 import Typed from 'typed.js';
 
 import { ExperienceVc } from './experience_view_controller';
@@ -27,7 +28,7 @@ export class PortfolioVc extends React.PureComponent {
   componentDidMount() {
     let strings = ["software engineer"];
     if (Math.random() > 0.5) {
-      strings = ["software enigneer^3000.^500.^500.^500 (╯°□°)╯︵ ┻━┻", "software engineer"];
+      strings = ["software enigneer^2000.^500.^500.^500 (╯°□°)╯︵ ┻━┻", "software engineer"];
     }
 
     const options = {
@@ -93,11 +94,12 @@ export class PortfolioVc extends React.PureComponent {
           />
         </Link>
         <Subheader>Misc</Subheader>
-        <MenuItem
-          primaryText="Hobbies"
-          disabled
-          leftIcon={<FontIcon className="fa fa-camera" color={grey600} />}
-        />
+        <RouterLink to="/hobbies">
+          <MenuItem
+            primaryText="Hobbies"
+            leftIcon={<FontIcon className="fa fa-camera" color={lightGreen500} />}
+          />
+        </RouterLink>
         <MenuItem
           primaryText="Blog"
           disabled
@@ -121,8 +123,7 @@ export class PortfolioVc extends React.PureComponent {
             <img className="summary-img" src="/images/me.jpg" alt="it me" />
           </div>
           <Section title="About">
-            <p>I&apos;m a grad student at Cornell University grabbing an MEng in computer science. My background is that of a web developer with some machine learning here or there, but I&apos;m really hoping to flex my machine learning and distributed computing skills during my time in grad school.</p>
-            <p>This site hosts something that might resemble a resume, but its true purpose is to organize my software projects over the years. I&apos;m also planning to grow a blog off it at some later point.</p>
+            <p>I am a software engineer interested in creating machine learning solutions for real world problems at scale. I am currently attending graduate school at Cornell University, researching video emotion recognition and gesture generation in the <a href="http://hrc2.io/">Human-Robot Collaboration & Companionship Lab</a>. I will be joining Google as a Cloud Machine Learning Engineer this summer.</p>
             <div className="icon-group-wrapper">
               <IconGroup
                 icons={[
