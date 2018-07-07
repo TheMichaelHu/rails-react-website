@@ -15,8 +15,8 @@ export class ExperienceVc extends React.Component {
       {
         company:  "Cornell University",
         location: "Ithaca, NY",
-        tenure:   "Aug 2017 - Present",
-        title:    "Candidate for MEng in Computer Science",
+        tenure:   "Aug 2017 - May 2018",
+        title:    "MEng in Computer Science",
       },
       {
         company:  "Northeastern University",
@@ -28,7 +28,16 @@ export class ExperienceVc extends React.Component {
 
     this.workExperiences = [
       {
-        company:  "BookBub (Pubmark Inc)",
+        company:  "Google",
+        location: "New York, NY",
+        tenure:   "July 2018 - Present",
+        title:    "Cloud Machine Learning Engineer",
+        bullets:  [
+          "Finding a way to add more buzzwords to my job title",
+        ],
+      },
+      {
+        company:  "BookBub",
         location: "Cambridge, MA",
         tenure:   "Jan 2016 - Aug 2017",
         title:    "Software Engineer",

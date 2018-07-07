@@ -51,7 +51,7 @@ export class HomeVc extends React.Component {
         </a>
         <Paper zDepth={1}>
           <div className="nav-footer-content">
-            <p>Copyright 2017 Michael Hu | All Rights Reserved</p>
+            <p>Copyright 2018 Michael Hu | All Rights Reserved</p>
             <p>Many thanks to the team behind <a href="http://www.material-ui.com/">Material-UI</a> for making amazing React components so I didn&apos;t have to!</p>
           </div>
         </Paper>

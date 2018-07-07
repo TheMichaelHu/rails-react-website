@@ -123,7 +123,7 @@ export class PortfolioVc extends React.PureComponent {
             <img className="summary-img" src="/images/me.jpg" alt="it me" />
           </div>
           <Section title="About">
-            <p>I am a software engineer interested in creating machine learning solutions for real world problems at scale. I am currently attending graduate school at Cornell University, researching video emotion recognition and gesture generation in the <a href="http://hrc2.io/">Human-Robot Collaboration & Companionship Lab</a>. I will be joining Google as a Cloud Machine Learning Engineer this summer.</p>
+            <p>I am a software engineer interested in creating machine learning solutions for real world problems at scale. I enjoy hiking, dancing, graphic design, and gaussian processes.</p>
             <div className="icon-group-wrapper">
               <IconGroup
                 icons={[
